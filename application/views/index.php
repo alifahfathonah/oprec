@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- For demo purpose -->
     <div class="row text-center mb-3 mt-s1">
       <div class="col-lg-8 mx-auto">
-        <h3>Bryantama</h3>
+        <h3>Bryantama123</h3>
         <p class="lead mb-0">Calon Asisten Laboratorium Teknik Informatika</p>
       </div>
     </div><!-- End -->
