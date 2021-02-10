@@ -394,7 +394,7 @@ select.list-dt:focus {
 /*START CSS ADMIN*/
 /*START CSS LOGIN*/
 .bg-btn {
-	background-image: -webkit-linear-gradient(0deg, #944191 0%, #ed213a 100%) !important;
+	background-image: -webkit-linear-gradient(0deg, #16B3AC 0%, #D2DC02 100%) !important;
 	width: 30%;
 	align-items: center;
 }

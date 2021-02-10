@@ -2,29 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 <!-- Start footer Area -->
-<footer class="footer-area section-gap text-white" style="background-image: url('<?php echo base_url('asset/images/2.png'); ?>');">
+<footer class="footer-area section-gap text-white">
+	
 	<div class="container">
-		<div class="row">
-			<div class="single-feature col-lg-6 text-center">
-				<h4 class="text-white">Depok</h4>
-				<ul>
-					<li>E535 Universitas Gunadarma</li>
-					<li>Jl. Akses UI, Kelapa Dua, Cimanggis, Depok</li>
-					<!-- <li>halo@ti.lab.gunadarma.ac.id</li> -->
-				</ul>
-			</div>
-			<div class="single-feature col-lg-6 text-center">
-				<h4 class="text-white">Kalimalang</h4>
-				<ul>
-					<li>J1222 Universitas Gunadarma</li>
-					<li>Jl. KH. Noer Ali, Kalimalang, Jakasampurna, Bekasi</li>
-					<!-- <li>halo@ti.lab.gunadarma.ac.id</li> -->
-				</ul>
-			</div>							
-		</div>
-	</div>
-	<div class="container">
-		<div class="footer-bottom text-center">
+		<div class="footer-bottom text-center sidebar-text">
 			<p class="footer-text m-0">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved</p>
 		</div>
 	</div>

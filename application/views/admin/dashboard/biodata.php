@@ -4,7 +4,7 @@
 <div class="container-fluid">
 	<div class="row mb-3">
 		<div class="col-md float-left">
-			<a href="<?=base_url('admin/dashboard')?>"><h2 class="mt-4">Biodata Calon AsisTadsten</h2></a>
+			<a href="<?=base_url('admin/dashboard')?>"><h2 class="mt-4">Biodata Calon Asisten</h2></a>
 		</div>
 		<div class="col-md float-right mt-4">
 			<form action="" method="post" accept-charset="utf-8">

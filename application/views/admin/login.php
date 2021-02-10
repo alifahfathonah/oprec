@@ -7,7 +7,8 @@
                     <!-- form card login -->
                     <div class="card rounded shadow shadow-sm">
                         <div class="card header bg-transparent text-center">
-                            <h3 class="mt-big mb-3">Login</h3>
+                        <h2 class="mt-2 mb-2 sidebar-text">INDIKATOR NASIONAL MUTU</h2>
+                            <h3 class="sidebar-text">Login</h3>
                         </div>
                         <?php if ($this->session->userdata('message')=='gagal'): ?>
                             <div class="alert alert-danger mb-3" role="alert">
@@ -27,7 +28,7 @@
                                         <div class="invalid-feedback">Enter your password too!</div>
                                     </div>
                                     <div class="justify-content-center text-center">
-                                        <button type="submit" name="submit" class="btn btn-success bg-btn btn-lg mt-5" id="btnLogin">Login</button>
+                                        <button type="submit" name="submit" class="btn btn-success bg-btn btn-lg mt-3 mb-5 " id="btnLogin">Login</button>
                                     </div>
                                 </form>
                             </div>

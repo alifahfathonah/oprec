@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="<?php echo base_url('asset/images/logo-labti.png'); ?>">
+	<link rel="shortcut icon" href="<?php echo base_url('asset/images/kemenkes.png'); ?>">
 	<!-- Author Meta -->
 	<meta name="author" content="codepixer">
 	<!-- Meta Description -->
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="container">
 		<div class="row align-items-center justify-content-between d-flex">
 			<div id="logo">
-				<a href="<?=site_url();?>"><img src="<?=base_url('asset/images/logo-labti.png'); ?>" width="50px"/></a>
+				<a href="<?=site_url();?>"><img src="<?=base_url('asset/images/kemenkes.png'); ?>" width="100px"/></a>
 			</div>
 		</div>
 	</div>
