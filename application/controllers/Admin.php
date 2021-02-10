@@ -26,11 +26,11 @@ class Admin extends CI_Controller {
 	private function _login(){
 		$username = $this->input->post('uname');
 		$password = $this->input->post('pwd');
-
+		
 		$user = $this->db->get_where('tbl_akun', ['username' => $username])->row_array();
 		
 		if ($user){
-			if (password_verify($password, $user['password'])){
+			if ($password=== $user['password']){
 				$this->session->set_userdata('login', '1');
 				$this->session->set_userdata('region', $username);
 				redirect('admin/dashboard');
