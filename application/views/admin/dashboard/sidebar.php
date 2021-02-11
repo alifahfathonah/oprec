@@ -18,8 +18,12 @@
   <!-- Page Content -->
   <div id="page-content-wrapper">
 
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom nav-height">
-      <button class="btn nav-btn" id="menu-toggle">
+    <nav class="navbar navbar-light border-bottom nav-height">
+      <button class="btn nav-btn nav-text" id="menu-toggle">
         <i class="fa fa-bars"></i>
       </button>
+      <div class="nav-text">
+        <ul>INDIKATOR NASIONAL</ul>
+        <ul>MUTU</ul>
+        </div>
     </nav>

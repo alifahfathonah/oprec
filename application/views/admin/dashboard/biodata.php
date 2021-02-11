@@ -1,10 +1,29 @@
-<?php if ($this->session->userdata('login')!=='1'): ?>
-	<?php redirect('admin') ?>
+<?php if (empty($this->session->userdata("nip"))): ?>
+	<?php redirect('admin');
+ ?>
 <?php endif ?>
-<div class="container-fluid">
+<?php $data=$this->db->query("SELECT * FROM user where kode_rs='".$this->session->userdata("kdrs")."'")->result_array();
+				 $i=0;
+				 foreach ($data as $value) {
+                   $i++;
+                  }
+				 ?>
+<?php $datakota=$this->db->query("SELECT nama_kota FROM m_kota where kode_kabupaten= LEFT('".$this->session->userdata("kdrs")."',4)")->result_array();
+				 $k=0;
+				 foreach ($datakota as $valuekota) {
+                   $k++;
+                  }
+				 ?>
+<?php $dataprovinsi=$this->db->query("SELECT nama_provinsi FROM m_provinsi where LEFT(kode_provinsi,2)= LEFT('".$this->session->userdata("kdrs")."',2)")->result_array();
+				 $p=0;
+				 foreach ($dataprovinsi as $valueprovinsi) {
+                   $p++;
+                  }
+				 ?>
+<!--<div class="container-fluid">
 	<div class="row mb-3">
-		<div class="col-md float-left">
-			<a href="<?=base_url('admin/dashboard')?>"><h2 class="mt-4">Biodata Calon Asisten</h2></a>
+		<div class="col-md float-left content-text">
+			<a><h2 class="mt-4">Biodata Calon Asisten</h2></a>
 		</div>
 		<div class="col-md float-right mt-4">
 			<form action="" method="post" accept-charset="utf-8">
@@ -19,155 +38,67 @@
 				</div>
 			</form>
 		</div>
-	</div>
-	<div class="row slideout-table h-auto">
-		<div class="col">
-			<table class="table table-striped mb-4">
-				<thead>
-					<tr align="center">
-						<th scope="col">No</th>
-						<th scope="col">Nama</th>
-						<th scope="col">NPM</th>
-						<th scope="col">Kelas</th>
-						<th scope="col">Tanggal Daftar</th>
-						<th scope="col">Detail</th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php if (empty($calas)):?>
-						<tr align="center">
-							<td colspan="6">
-								<strong>Data Calon Asisten Tidak Ditemukan</strong>
-							</td>
-						</tr>
-					<?php endif ?>
-					<?php foreach ($calas as $cls):?>
-						<tr align="center">
-							<th scope="row"><?=++$start?></th>
-							<td><?=$cls['nama']?></td>
-							<td><?=$cls['npm']?></td>
-							<td><?=$cls['kelas'];?></td>
-							<td><?=date('j M Y H:i:s', strtotime($cls['tanggal_daftar']));?></td>
-							<td>
-								<button data-token="<?=$cls['token'];?>" type="button" class="btn btn-success btn_detail" data-toggle="modal" data-target="#modalDetail">Detail</button>
-							</td>
-						</tr>
-					<?php endforeach ?>
-				</tbody>
-			</table>
-			<?= $this->pagination->create_links(); ?>
-		</div>
-	</div>
-
-	<!-- tadinya buat sort -->
-	<!-- <div class="row">
-		<div class="col-md-6 mt-4 text-center">
-			<form action="<?=base_url('admin/dashboard')?>" method="get">
-				<div class="form-row">
-					<div class="col">
-						<span class="form-text">Sort By :</span>
-					</div>
-					<div class="col mt-1 mb-1">
-						<select name="sort_biodata_calas" id="sort_biodata_calas">
-							<option selected value="tanggal_daftar">Tanggal Daftar ASC</option>
-							<option value="nama">Nama ASC</option>
-							<option value="kelas">Kelas ASC</option>
-						</select>
-					</div>
-					<div class="col col-sm-7 mt-1">
-						<button name="sort" type="button" class="">&nbsp;Sort&nbsp;</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		<div class="col-md-6 mt-4 float-right">
-			pagination here
-		</div>
-	</div> -->
-</div>
-
-
-<!-- Modal Detail-->
-<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetailTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="modalDetailTitle">Detail Nama Peserta</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body">
-				<div class="form-card">
-					<div class="form-group">
-						<small class="form-text text-muted">Kode Peserta</small>
-						<input class="form-control" type="text" name="detail_token" id="detail_token" placeholder="Kelas" />
-					</div>
-					<div class="row">
-						<div class="form-group col-md-6">
-							<small class="form-text text-muted">Nama</small>
-							<input class="form-control" type="text" name="detail_nama" id="detail_nama" placeholder="Nama Lengkap"/>
-						</div>
-						<div class="form-group col-md-6">
-							<small class="form-text text-muted">Kelas</small>
-							<input class="form-control" type="text" name="detail_kelas" id="detail_kelas" placeholder="Kelas" />
-						</div>
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">Tanggal Daftar</small>
-						<input class="form-control" type="text" name="detail_tanggal_daftar" id="detail_tanggal_daftar" placeholder="Kelas" />
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">Jenis Kelamin</small>
-						<input class="form-control" type="text" name="detail_jk" id="detail_jk" placeholder="Kelas" />
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">Tempat dan Tanggal Lahir</small>
-						<input class="form-control" type="text" name="detail_ttl" id="detail_ttl" placeholder="Tempat Lahir"/>
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">No. Handphone</small>
-						<input class="form-control" type="text" name="detail_no_hp" id="detail_no_hp" placeholder="Nomor Handphone" />
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">Email</small>
-						<input class="form-control" type="text" name="detail_email" id="detail_email" placeholder="Email" />
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">Semester</small>
-						<input class="form-control" type="text" name="detail_semester" id="detail_semester" placeholder="Semester" />
-					</div>
-					<div class="form-group">
-						<small class="form-text text-muted">IPK</small>
-						<input type="text" name="detail_ipk" id="detail_ipk" class="mb-0 form-control" placeholder="IPK" />
-					</div>
-				</div> 
-			</div>
-			<div class="modal-footer">
-				<button type="button" id="detail_close" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<a href="#" id="downloadBerkas" title="Download Berkas Calon Asisten">
-					<button type="button" id="detail_download" class="btn btn-primary">Download Berkas</button>
-				</a>
-			</div>
-		</div>
-	</div>
-</div>
-
-<div class="modal fade" id="searchInfo" tabindex="-1" role="dialog" aria-labelledby="searchInfoTitle" aria-hidden="true">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLongTitle">Search</h5>
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-			<div class="modal-body text-center">
-				<p class="fw-600">Jika ingin mencari data, pastikan anda berada pada data index (Data paling awal).</p>
-			</div>
-			<div class="modal-footer text-center align-items-center justify-content-center">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div>
+	</div>-->
+<section class="content mt-4">
+  <form action="" method="post">
+    <!-- Data Pasien-->
+    <div class="row">
+	    <div class="col-md-12">
+        <div class="box box-primary">
+          	<div class="box-header with-border">
+            	<h1 class="box-title content-text">BIODATA RUMAH SAKIT</h1>
+          	</div>
+            <div class="box-body">
+			    <div class="column">
+			        <div class="content-text">
+				        <h4>Kode RS</h4>
+						<p><?php echo $value['kode_rs']?></p>
+               		</div>
+              		<div class="content-text">
+                		<h4>Nama Rumah Sakit</h4>
+						<p><?php echo $value['nama_lengkap']?></p>
+                	</div>
+					<div class="content-text">
+				        <h4>Alamat Rumah Sakit</h4>
+						<p>jfhah a akjahdaduaowajndsm ajhsj mnamdnadjwalkdnj adhasdjasdjalkdwialdkjal kahdwialskdjw hadssa jdhahwalskdhwoalskjdwia alkshd afajsd iw</p>
+               		</div>
+					<div class="content-text">
+				        <h4>Provinsi</h4>
+						<p><?php echo $valueprovinsi['nama_provinsi']?></p>
+               		</div>
+					<div class="content-text">
+				        <h4>Kota / Kabupaten</h4>
+						<p><?php echo $valuekota['nama_kota']?></p>
+               		</div>
+            	</div>
+			    <div class="column">
+              		<div class="content-text">
+               			<h4>Telepon</h4>
+						   <p>32132131</p>
+              		</div>
+              		<div class="content-text">
+                		<h4>E-mail</h4>
+						<p>32132131</p>
+              		</div>
+					  <div class="content-text">
+                		<h4>Kelas</h4>
+						<p>32132131</p>
+              		</div>
+					  <div class="content-text">
+                		<h4>Jenis</h4>
+						<p>32132131</p>
+              		</div>
+					  <div class="content-text">
+                		<h4>Kepemilikan</h4>
+						<p>32132131</p>
+              		</div>
+					<div class="content-text">
+                		<h4>PKS Dengan BPJS</h4>
+						<p>32132131</p>
+              		</div>
+            	</div>
+          	</div>
+        </div>
+      </div>
+	</form>
+	</section>

@@ -10,7 +10,7 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		if ($this->session->userdata('login')==='1'){
+		if (!empty($this->session->userdata("nip"))){
 			redirect('admin/dashboard');
 		}
 		$data['title'] = 'Indikator Nasional Mutu';
@@ -32,8 +32,9 @@ class Admin extends CI_Controller {
 			   $this->load->model('login_model');
 			  //var_dump($datas);
 					$data = $this->login_model->login($datas['uname'],$datas['pwd']);
+					
 						 //var_dump($data);
-					if(!empty($data))
+						 if(!empty($data))
 					{
 				
 						$start=time();
@@ -46,12 +47,10 @@ class Admin extends CI_Controller {
 							'admin' => $data[0]['admin']
 							);
 						$this->session->set_userdata($data_session);
-						redirect("dashboard");
+						redirect("admin/dashboard");
 						}
-						redirect("dashboard");
-						$this->load->view('admin/dashboard/biodata');
-						$this->load->view('admin/dashboard/sidebar');
-						$this->load->view('admin/dashboard/footer');
+						redirect("admin/dashboard");
+			
 			}else{
 				$this->session->set_flashdata('message', 'gagal');
 				
@@ -75,29 +74,15 @@ class Admin extends CI_Controller {
 		//Load library pagination
 		$this->load->library('pagination');
 
-		
-
 		//config pagination
 		$config['base_url'] = base_url('admin/dashboard/index');
-		
-
 		//initialize pagination
 		$this->pagination->initialize($config);
-		
-		
 		$this->load->view('admin/dashboard/header');
-		if ($this->session->userdata('region') == 'labti_xm') {
-			$this->load->view('admin/dashboard/sidebar_xm');	
-		} else{
-			$this->load->view('admin/dashboard/sidebar');
-		}
+		$this->load->view('admin/dashboard/sidebar');
 		$this->load->view('admin/dashboard/biodata');
 		$this->load->view('admin/dashboard/footer');
 	}
-
-
-	
-	
 }
 
 /* End of file admin.php */

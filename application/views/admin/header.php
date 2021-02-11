@@ -30,6 +30,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<link rel="stylesheet" href="<?=base_url('asset/css/owl.carousel.css'); ?>">
 	<link rel="stylesheet" href="<?=base_url('asset/css/main.css'); ?>">
 	<link rel="stylesheet" href="<?=base_url('asset/css/fontawesome/css/all.css'); ?>">
+	 <!-- Theme style -->
+	 <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/AdminLTE.min.css')?>">
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
