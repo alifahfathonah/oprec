@@ -22,7 +22,7 @@
       <button class="btn nav-btn nav-text" id="menu-toggle">
         <i class="fa fa-bars"></i>
       </button>
-      <div class="nav-text">
+      <div class="nav-text mr-3">
         <ul>INDIKATOR NASIONAL</ul>
         <ul>MUTU</ul>
         </div>

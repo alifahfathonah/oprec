@@ -20,6 +20,12 @@
                    $p++;
                   }
 				 ?>
+<?php $datars=$this->db->query("SELECT * FROM data_rs where KODE_RS='".$this->session->userdata("kdrs")."'")->result_array();
+				 $r=0;
+				 foreach ($datars as $valuers) {
+                   $r++;
+                  }
+				 ?>
 <!--<div class="container-fluid">
 	<div class="row mb-3">
 		<div class="col-md float-left content-text">
@@ -46,7 +52,7 @@
 	    <div class="col-md-12">
         <div class="box box-primary">
           	<div class="box-header with-border">
-            	<h1 class="box-title content-text">BIODATA RUMAH SAKIT</h1>
+            	<h1 class="box-title content-text ml-3">BIODATA RUMAH SAKIT</h1>
           	</div>
             <div class="box-body">
 			    <div class="column">
@@ -60,7 +66,7 @@
                 	</div>
 					<div class="content-text">
 				        <h4>Alamat Rumah Sakit</h4>
-						<p>jfhah a akjahdaduaowajndsm ajhsj mnamdnadjwalkdnj adhasdjasdjalkdwialdkjal kahdwialskdjw hadssa jdhahwalskdhwoalskjdwia alkshd afajsd iw</p>
+						<p><?php echo $valuers['ALAMAT']?></p>
                		</div>
 					<div class="content-text">
 				        <h4>Provinsi</h4>
@@ -74,27 +80,27 @@
 			    <div class="column">
               		<div class="content-text">
                			<h4>Telepon</h4>
-						   <p>32132131</p>
+						   <p><?php echo $valuers['TELEPON']?></p>
+              		</div>
+					<div class="content-text">
+                		<h4>Telepon Humas</h4>
+						<p><?php echo $valuers['TELEPON_HUMAS']?></p>
               		</div>
               		<div class="content-text">
-                		<h4>E-mail</h4>
-						<p>32132131</p>
+                		<h4>Website</h4>
+						<p><?php echo $valuers['WEBSITE']?></p>
               		</div>
 					  <div class="content-text">
                 		<h4>Kelas</h4>
-						<p>32132131</p>
+						<p><?php echo $valuers['KELAS']?></p>
               		</div>
 					  <div class="content-text">
                 		<h4>Jenis</h4>
-						<p>32132131</p>
+						<p><?php echo $valuers['JENIS']?></p>
               		</div>
 					  <div class="content-text">
                 		<h4>Kepemilikan</h4>
-						<p>32132131</p>
-              		</div>
-					<div class="content-text">
-                		<h4>PKS Dengan BPJS</h4>
-						<p>32132131</p>
+						<p><?php echo $valuers['PENYELENGGARA']?></p>
               		</div>
             	</div>
           	</div>
