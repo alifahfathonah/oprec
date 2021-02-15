@@ -60,9 +60,8 @@ class Admin extends CI_Controller {
 	
 	
 	public function logout(){
-		if ($this->session->userdata('login')==='1'){
-			$this->session->unset_userdata('login');
-			$this->session->unset_userdata('region');
+		if (!empty($this->session->userdata("nip"))){
+			$this->session->unset_userdata("nip");
 			redirect('admin');	
 		}else{
 			redirect('admin');

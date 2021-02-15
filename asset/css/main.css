@@ -403,7 +403,7 @@ select.list-dt:focus {
 
 /*START CSS DASHBOARD*/
 .nav-height{
-	height: 56px;
+	height: 65px;
 	background: rgba(22, 179, 172, 1);
 	background: linear-gradient(89.74deg, #16B3AC 0.08%, rgba(68, 194, 188, 0.802083) 29.67%, rgba(208, 240, 238, 0.201751) 83.68%, rgba(255, 255, 255, 0) 99.77%), rgba(210, 220, 2, 0.8);
 }
@@ -415,7 +415,7 @@ select.list-dt:focus {
 }
 
 .sidebar-bg{
-	background: rgba(246, 250, 251, 1);
+	background: rgb(235 248 251);
 	/*background: linear-gradient(89.74deg, #16B3AC 0.08%, rgba(68, 194, 188, 0.802083) 29.67%, rgba(208, 240, 238, 0.201751) 83.68%, rgba(255, 255, 255, 0) 99.77%), rgba(210, 220, 2, 0.8);*/
 }
 
@@ -432,7 +432,7 @@ select.list-dt:focus {
 .nav-text{
 	font-family: "Poppins",sans-serif;
 	color: #121136;
-	font-size: 10pt;
+	font-size: 14pt;
 	font-weight: 600;
 }
 .bg-non{
