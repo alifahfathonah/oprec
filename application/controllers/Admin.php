@@ -11,7 +11,12 @@ class Admin extends CI_Controller {
 	public function index()
 	{
 		if (!empty($this->session->userdata("nip"))){
-			redirect('admin/dashboard');
+			if($this->session->userdata("admin") == "ya"){
+				redirect("admin/dashboard_admin");
+			}
+			else{
+				redirect("admin/dashboard_user");
+			}
 		}
 		$data['title'] = 'Indikator Nasional Mutu';
 		$this->load->view('admin/header', $data);
@@ -45,11 +50,16 @@ class Admin extends CI_Controller {
 							'kdrs' => $data[0]['kode_rs'],
 							'jenis' => $data[0]['jenis'],
 							'admin' => $data[0]['admin']
-							);
+						);
 						$this->session->set_userdata($data_session);
-						redirect("admin/dashboard");
+						//redirect("admin/dashboard");
+						if($this->session->userdata("admin") == "ya"){
+							redirect("admin/dashboard_admin");
 						}
-						redirect("admin/dashboard");
+						else{
+							redirect("admin/dashboard_user");
+						}
+						}
 			
 			}else{
 				$this->session->set_flashdata('message', 'gagal');
@@ -68,19 +78,61 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	public function dashboard()
+	public function dashboard_user()
 	{
 		//Load library pagination
 		$this->load->library('pagination');
 
 		//config pagination
-		$config['base_url'] = base_url('admin/dashboard/index');
+		$config['base_url'] = base_url('admin/dashboard_user/index');
 		//initialize pagination
 		$this->pagination->initialize($config);
-		$this->load->view('admin/dashboard/header');
-		$this->load->view('admin/dashboard/sidebar');
-		$this->load->view('admin/dashboard/biodata');
-		$this->load->view('admin/dashboard/footer');
+		$this->load->view('admin/dashboard_user/header');
+		$this->load->view('admin/dashboard_user/sidebar');
+		$this->load->view('admin/dashboard_user/biodata');
+		$this->load->view('admin/dashboard_user/footer');
+	}
+	public function dashboard_admin()
+	{
+		//Load library pagination
+		$this->load->library('pagination');
+
+		//config pagination
+		$config['base_url'] = base_url('admin/dashboard_admin/index');
+		//initialize pagination
+		$this->pagination->initialize($config);
+		$this->load->view('admin/dashboard_admin/header');
+		$this->load->view('admin/dashboard_admin/sidebar');
+		$this->load->view('admin/dashboard_admin/rekapbulanan');
+		$this->load->view('admin/dashboard_admin/footer');
+	}
+	public function nilai()
+	{
+		//Load library pagination
+		$this->load->library('pagination');
+
+		//config pagination
+		$config['base_url'] = base_url('admin/dashboard_user/index');
+		//initialize pagination
+		$this->pagination->initialize($config);
+		$this->load->view('admin/dashboard_user/header');
+		$this->load->view('admin/dashboard_user/sidebar');
+		$this->load->view('admin/dashboard_user/nilai');
+		$this->load->view('admin/dashboard_user/footer');
+	}
+	public function rekap_tahunan()
+	{
+		//Load library pagination
+		$this->load->library('pagination');
+
+		//config pagination
+		$config['base_url'] = base_url('admin/dashboard_admin/index');
+		//initialize pagination
+		$this->pagination->initialize($config);
+		$this->load->view('admin/dashboard_admin/header');
+		$this->load->view('admin/dashboard_admin/sidebar');
+		$this->load->view('admin/dashboard_admin/nilai');
+		$this->load->view('admin/dashboard_admin/footer');
 	}
 }
 

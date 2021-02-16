@@ -52,7 +52,7 @@
 	    <div class="col-md-12">
         <div class="box box-primary">
           	<div class="box-header with-border">
-            	<h1 class="box-title content-text ml-3">BIODATA RUMAH SAKIT</h1>
+            	<h2 class="box-title content-text ml-3">BIODATA RUMAH SAKIT</h2>
           	</div>
             <div class="box-body">
 			    <div class="column">
