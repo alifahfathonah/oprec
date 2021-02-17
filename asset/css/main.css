@@ -495,6 +495,15 @@ position: relative;
 .box-title{
 	margin: 10px;
 }
+
+.thtable { 
+	display: block; 
+	overflow: scroll; 
+}
+.maintable { 
+	table-layout: 
+	fixed; width: 100% 
+}
 /*END CSS DASHBOARD*/
 /*END CSS ADMIN*/
 
